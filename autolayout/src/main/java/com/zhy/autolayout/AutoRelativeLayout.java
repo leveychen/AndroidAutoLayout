@@ -17,10 +17,11 @@
 package com.zhy.autolayout;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.zhy.autolayout.utils.AutoLayoutHelper;
 
 public class AutoRelativeLayout extends RelativeLayout
 {
@@ -47,8 +48,6 @@ public class AutoRelativeLayout extends RelativeLayout
         return new LayoutParams(getContext(), attrs);
     }
 
-
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
@@ -63,10 +62,11 @@ public class AutoRelativeLayout extends RelativeLayout
         super.onLayout(changed, left, top, right, bottom);
     }
 
+
     public static class LayoutParams extends RelativeLayout.LayoutParams
             implements AutoLayoutHelper.AutoLayoutParams
     {
-        private AutoLayoutHelper.AutoLayoutInfo mAutoLayoutInfo;
+        private AutoLayoutInfo mAutoLayoutInfo;
 
         public LayoutParams(Context c, AttributeSet attrs)
         {
@@ -90,7 +90,7 @@ public class AutoRelativeLayout extends RelativeLayout
         }
 
         @Override
-        public AutoLayoutHelper.AutoLayoutInfo getPercentLayoutInfo()
+        public AutoLayoutInfo getAutoLayoutInfo()
         {
             return mAutoLayoutInfo;
         }
